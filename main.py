@@ -6,6 +6,11 @@ def parallel_processing(n, m, data):
     output = []
     heap = [(0,i) for i in range(n)]
     heapq.heapify(heap)
+
+    for i, gh in enumerate(data):
+        time, thread = heapq.heappop(heap)
+        output.append((thread, time))
+        heapq.heappush(heap,(time + gh, thread))
     return output
 
 def main():
